@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="main_panel">
+          <form class="main_panel" action="{{ url_for('account') }}" method="POST">
+            <div id="input_to">
+              <div class = "element">
+                <div class="label_div">
+                  <label htmlFor="columnTo">Column for "To":</label>
+                </div>
+                <div class = "input_div">
+                  <input type="text" id="columnTo" name="columnTo" placeholder='A' maxLength="1"/>
+                </div>
+              </div>
+            </div>
+            <div id="input_subject">
+              <div class = "element">
+                <div class="label_div">
+                  <label htmlFor="columnSubject">Column for "Subject":</label>
+                </div>
+                <div class = "input_div">
+                  <input type="text" id="columnSubject" name="columnSubject" placeholder="B" maxLength="1"/>
+                </div>
+              </div>
+            </div>
+            <div id="input_body">
+              <div class = "element">
+                <div class="label_div">
+                  <label htmlFor="columnBody">Column for "Body":</label>
+                </div>
+                <div class = "input_div">
+                  <input type="text" id="columnBody" name="columnBody" placeholder="C" maxLength="1"/>
+                </div>
+              </div>
+            </div>
+            <div id="input_start">
+              <div class = "element">
+                <div class="label_div">
+                  <label htmlFor="rangeFirst">Start row:</label>
+                </div>
+                <div class = "input_div">
+                  <input type="text" id="rangeFirst" name="rangeFirst" placeholder="2"/>
+                </div>
+              </div>
+            </div>
+            <div id="input_end">
+              <div class = "element">
+                <div class="label_div">
+                  <label htmlFor="rangeLast">End row:</label>
+                </div>
+                <div class = "input_div">
+                  <input type="text" id="rangeLast" name="rangeLast" placeholder="1900"/>
+                </div>
+              </div>
+            </div>
+            <div id="input_name">
+              <div class = "element">
+                <div class="label_div">
+                  <label htmlFor="sheetName">Sheet's name:</label>
+                </div>
+                <div class = "input_div">
+                  <input type="text" id="sheetName" name="sheetName" placeholder="Sheet1"/>
+                </div>
+              </div>
+            </div>
+            <div id="input_link">
+              <div class = "element" style="width:100%">
+                <div class="label_div" style="width:15%">
+                  <label htmlFor="link">Spreadsheet's link:</label>
+                </div>
+                <div class = "input_div" style="width:100%">
+                  <input  style="width:100%" type="text" id="link" name="link" placeholder="https://docs.google.com/spreadsheets/d/..."/>
+                </div>
+              </div>
+            </div>
+            <div id="submit_button">
+              <button type="submit" class="btn" >Submit </button>
+            </div>
+          </form>
+        </div> 
+        <div id="error_list">
+          {% for err in errors_list %}
+            <div className='error' onClick={copy}>
+              <div className='error-recipient'>
+                {{err.recipient}} 
+              </div>
+              <div className='success_status'>
+                {{err.status}}
+                  <img width="20" src="{{url_for('static', filename='cancel.svg')}}"/>
+              </div>
+            </div>
+            {% endfor %}
+          {{errors_list}}
+        </div>
+          <div id="profile_info">
+            <a href="/clear" class="profile">
+  
+              <div class="profile_pic">
+                <img style="border-radius:100%" src="{{picture}}"/>
+              </div>
+              <div class="profile_info">
+                <p>{{name}}</p>
+                <p>{{email}}</p>
+              </div>
+            </a>
+          </div>
+        <div id="success_list">
+          {% for res in results %}
+            <div className='success'>
+              <div>
+                  Email: {{res.recipient}} 
+              </div>
+              <div>
+                  Subject: {{res.subject}}
+              </div>
+              <div className='success_status'>
+                  {{res.status}}
+                  <img width="20" src="{{url_for('static', filename='check_circle.svg')}}"/>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+</body>
+</html>
