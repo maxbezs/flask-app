@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/style.css">
-    <title>Document</title>
+    <title>CartelConnect</title>
 </head>
 <body>
     <div class="container">
@@ -88,11 +88,11 @@
         </div> 
         <div id="error_list">
           {% for err in errors_list %}
-            <div className='error' onClick={copy}>
-              <div className='error-recipient'>
+            <div class='error' onClick={copy}>
+              <div class='error-recipient'>
                 {{err.recipient}} 
               </div>
-              <div className='success_status'>
+              <div class='success_status'>
                 {{err.status}}
                   <img width="20" src="{{url_for('static', filename='cancel.svg')}}"/>
               </div>
@@ -114,14 +114,14 @@
           </div>
         <div id="success_list">
           {% for res in results %}
-            <div className='success'>
+            <div class='success'>
               <div>
                   Email: {{res.recipient}} 
               </div>
               <div>
                   Subject: {{res.subject}}
               </div>
-              <div className='success_status'>
+              <div class='success_status'>
                   {{res.status}}
                   <img width="20" src="{{url_for('static', filename='check_circle.svg')}}"/>
               </div>

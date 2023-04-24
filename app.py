@@ -1,41 +1,17 @@
-import flask
-from flask.helpers import send_from_directory
-from flask_cors import CORS, cross_origin
-from apiclient import errors
-from flask import Flask, request, json, jsonify, redirect, url_for
-import pymongo
-from google_auth_oauthlib.flow import Flow, InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
-from google.auth.transport.requests import Request
-import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import time
-from email.utils import formataddr
-from werkzeug.exceptions import HTTPException
-from urllib.error import HTTPError
-import urllib.request
-from flask_cors import CORS, cross_origin
-from flask.helpers import send_from_directory
-import datetime
-import google.oauth2.credentials
+from flask import request, url_for
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
+import google.oauth2.credentials
 from threading import Thread
-import os 
-from bson import BSON
-from bson import json_util
-import json
-
+from apiclient import errors
+from flask_cors import CORS
+import pymongo
+import base64
+import flask
+import time
 import os
-import pathlib
-import requests
-from flask import Flask, session, abort, redirect, request
-from google.oauth2 import id_token
-from google_auth_oauthlib.flow import Flow
-from pip._vendor import cachecontrol
-import google.auth.transport.requests
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = flask.Flask(__name__)
